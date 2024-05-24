@@ -1,4 +1,14 @@
+import { useEffect } from 'react';
+import { fetchContacts } from '../redux/API';
+import { useDispatch } from 'react-redux';
+
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <div
       style={{
