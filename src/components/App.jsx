@@ -1,7 +1,8 @@
+import { ContactForm } from 'components/ContactForm';
 import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/API';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectError, selectIsLoading } from '../../redux/selectors';
+import { fetchContacts } from '../redux/API';
+import { selectError, selectIsLoading } from '../redux/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const App = () => {
 
   return (
     <>
-      <div>goit-react-hw-07-phonebook</div>
+      <ContactForm />
       {isLoading && !error && <p>...is Loading</p>}
     </>
   );
