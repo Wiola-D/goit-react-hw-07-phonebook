@@ -2,7 +2,7 @@ export const filterInitialState = {
   status: '',
 };
 
-export const contactInitialState = {
+export const contactsInitialState = {
   items: [],
   isLoading: false,
   error: null,
