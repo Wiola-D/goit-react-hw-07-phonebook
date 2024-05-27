@@ -1,0 +1,15 @@
+.noContacts {
+  padding: 20px;
+  font-weight: 500;
+}
+.list {
+  border: 1px ridge rgba(158, 158, 158, 0.6);
+  border-radius: 4px;
+}
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  width: 100%;
+  padding: 3px;
+}

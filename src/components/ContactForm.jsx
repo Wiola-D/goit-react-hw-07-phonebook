@@ -3,6 +3,7 @@ import { addContact } from '../redux/API';
 import { selectContacts } from '../redux/selectors';
 import { nanoid } from '@reduxjs/toolkit';
 import css from '../styles/ContactForm.module.css';
+import { useEffect } from 'react';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();

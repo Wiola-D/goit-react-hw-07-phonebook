@@ -1,0 +1,16 @@
+.buttonDelete {
+  min-width: 45px;
+  height: 25px;
+  font-size: 10px;
+  margin-right: 25px;
+}
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.liName {
+  font-weight: 600;
+  text-align: left;
+  margin-right: 10px;
+}

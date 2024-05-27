@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../redux/reducer/filterSlice';
 import { nanoid } from '@reduxjs/toolkit';
-// import css from '../styles/Filter.module.css';
+import css from '../styles/Filter.module.css';
 
 export const Filter = () => {
   const filterInputId = nanoid();
@@ -13,7 +13,7 @@ export const Filter = () => {
   };
 
   return (
-    <div>
+    <div className={css.inputContainer}>
       <p>Find contacts by name</p>
       <input
         onChange={handleFilter}
