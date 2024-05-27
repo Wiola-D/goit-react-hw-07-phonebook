@@ -1,41 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isPending } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from '../API';
+import { isRejectAction, isPendingAction } from '../isAction';
+import { contactInitialState } from '../constants';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const contactSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+  initialState: contactInitialState,
+
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, (state, action) => {
-        state.isLoading = true;
-      })
+
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchContacts.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(addContact.pending, (state, action) => {
-        state.isLoading = true;
-      })
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items.push(action.payload);
-      })
-      .addCase(addContact.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(deleteContact.pending, (state, action) => {
-        state.isLoading = true;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -43,9 +35,10 @@ const contactSlice = createSlice({
         const index = state.findIndex(task => task.id === action.payload);
         state.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+      .addMatcher(isPendingAction, handlePending)
+      .addMatcher(isRejectAction, handleRejected)
+      .addDefaultCase((state, action) => {
+        state.error = 'someone use old function, fix it!';
       });
   },
 });
