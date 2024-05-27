@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../redux/API';
 import { selectError, selectIsLoading } from '../redux/selectors';
+import { ContactsList } from './ContactList';
+import { Filter } from './Filter';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -18,6 +20,8 @@ export const App = () => {
     <>
       <ContactForm />
       {isLoading && !error && <p>...is Loading</p>}
+      <Filter />
+      <ContactsList />
     </>
   );
 };

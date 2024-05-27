@@ -1,5 +1,5 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { fetchContacts, addContact } from '../API';
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts, addContact, deleteContact } from '../API';
 
 const contactSlice = createSlice({
   name: 'contacts',
@@ -31,6 +31,19 @@ const contactSlice = createSlice({
         state.items.push(action.payload);
       })
       .addCase(addContact.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteContact.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.findIndex(task => task.id === action.payload);
+        state.splice(index, 1);
+      })
+      .addCase(deleteContact.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
