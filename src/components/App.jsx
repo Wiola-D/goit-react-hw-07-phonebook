@@ -24,11 +24,16 @@ export const App = () => {
   return (
     <div className={css.container}>
       {isLoading && !error && <p>...is Loading</p>}
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>ContactForm</h2>
-      <Filter />
-      <ContactsList error={error} />
+      {error && <p>{error}</p>}
+      {contacts.length > 0 && (
+        <>
+          <h1>Phonebook</h1>
+          <ContactForm />
+          <h2>ContactForm</h2>
+          <Filter />
+          <ContactsList error={error} />
+        </>
+      )}
     </div>
   );
 };
