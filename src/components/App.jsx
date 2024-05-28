@@ -10,6 +10,7 @@ import {
 import { ContactsList } from './ContactList';
 import { Filter } from './Filter';
 import css from '../styles/App.module.css';
+import { Loader } from './Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,18 +23,16 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
-      {isLoading && !error && <p>...is Loading</p>}
-      {error && <p>{error}</p>}
-      {contacts.length > 0 && (
-        <>
-          <h1>Phonebook</h1>
-          <ContactForm />
-          <h2>ContactForm</h2>
-          <Filter />
-          <ContactsList error={error} />
-        </>
-      )}
+    <div>
+      {isLoading && !error && <Loader />}
+      <div className={css.container}>
+        {error && <p>{error}</p>}
+        <h1>Phonebook</h1>
+        <ContactForm />
+        <h2>ContactForm</h2>
+        <Filter />
+        <ContactsList error={error} />
+      </div>
     </div>
   );
 };

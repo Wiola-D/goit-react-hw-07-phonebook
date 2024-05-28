@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilter } from '../redux/reducer/filterSlice';
+import { setFilter } from '../redux/filterSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import css from '../styles/Filter.module.css';
 
@@ -14,13 +14,13 @@ export const Filter = () => {
 
   return (
     <div className={css.inputContainer}>
-      <p>Find contacts by name</p>
       <input
         onChange={handleFilter}
         type="text"
         name="filter"
         id={filterInputId}
         pattern="^[a-zA-Zа-яА-Я]+((['\s\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        placeholder="Find contacts by name"
       />
     </div>
   );

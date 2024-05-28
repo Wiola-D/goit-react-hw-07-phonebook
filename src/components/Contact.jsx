@@ -7,10 +7,6 @@ export const Contact = ({ contact }) => {
 
   const handleDelete = () => dispatch(deleteContact(contact.id));
 
-  // useEffect(() => {
-  //   console.log(contact);
-  // }, []);
-
   return (
     <>
       <div className={css.container}>

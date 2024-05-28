@@ -9,5 +9,7 @@
     rgba(162, 255, 246, 1) 0%,
     rgba(0, 96, 86, 1) 100%
   );
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.452) 0px 5px 15px;
+  text-align: center;
+  margin: auto;
 }
