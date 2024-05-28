@@ -14,7 +14,6 @@ import { Loader } from './Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
